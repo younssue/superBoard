@@ -15,6 +15,7 @@ import java.util.Map;
 
 @Configuration
 @EnableJpaRepositories(
+        // basePackages는 패키지 경로에 대한 설정, 해당 경로를 포함하는 하위 패키지를 모두 스캔
         basePackages = {"com.Super.Board.user.repository"},
         entityManagerFactoryRef = "entityManagerFactoryBean",
         transactionManagerRef = "tmJpa"
@@ -25,7 +26,7 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("com.github.crudprac.repository");
+        em.setPackagesToScan("com.Super.Board.user.repository");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

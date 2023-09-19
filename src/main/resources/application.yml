@@ -6,11 +6,13 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/DB이름?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: 사용자이름
-    password: 사용자 비밀번호
+    url: jdbc:mysql://localhost:3306/super_board2?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 4865
   thymeleaf:
     cache: false
+logging:
+  config: classpath:logback-spring.xml
 
     #spring data jpa 설정
   jpa:
@@ -19,3 +21,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+jwt:
+  secret-key-source: super-board
