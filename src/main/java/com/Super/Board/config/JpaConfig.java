@@ -22,10 +22,12 @@ import java.util.Map;
 public class JpaConfig {
 
     @Bean
+
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean( DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
         em.setPackagesToScan("com.Super.Board.user.repository");
+
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -50,3 +52,4 @@ public class JpaConfig {
         return transactionManager;
     }
 }
+
