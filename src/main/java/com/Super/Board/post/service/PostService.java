@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -20,9 +21,24 @@ public class PostService {
 
     private final PostRepository postRepository;
 
+    // 게시글 생성
+    public PostEntity createPost(PostEntity postEntity){
+        return postRepository.save(postEntity);
+    }
+
+
+    // 단일 게시글 조회
+    public PostEntity findPost(long postId){
+        return findVerifiedPost(postId);
+    }
+
+    public List<PostEntity> findPosts(){
+        return postRepository.findAll();
+    }
+
     public List<PostDTO> getPostsByPostWriter(String author) {
         System.out.println("author = " + author);
-        List<PostEntity> postEntities = postRepository.findByPostWriterContaining(author);
+        List<PostEntity> postEntities = postRepository.findByAuthorContaining(author);
 
         // 결과가 존재하는지 확인
         if (!postEntities.isEmpty()) {
@@ -77,5 +93,19 @@ public class PostService {
             // 조회한 게시글이 없는 경우
             return null;
         }
+    }
+    // 게시글 삭제
+    public void deletePost(long postId) {
+        PostEntity findPost = findVerifiedPost(postId);
+
+        postRepository.delete(findPost);
+    }
+
+    // 게시물 있나 검증
+    private PostEntity findVerifiedPost(long postId){
+        Optional<PostEntity> optionalPostEntity = postRepository.findById(postId);
+        PostEntity findPost = optionalPostEntity.orElseThrow(() ->
+                new NoSuchElementException());
+        return findPost;
     }
 }

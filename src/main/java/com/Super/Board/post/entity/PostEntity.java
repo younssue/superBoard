@@ -28,7 +28,4 @@ public class PostEntity extends BaseTimeEntity{
     //글작성
 
 
-
-
-
 }

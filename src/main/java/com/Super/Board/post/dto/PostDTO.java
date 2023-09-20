@@ -28,6 +28,8 @@ public class PostDTO {
         postDTO.setAuthor(postEntity.getAuthor());
         postDTO.setTitle(postEntity.getTitle());
         postDTO.setContents(postEntity.getContents());
+        postDTO.setCreatedAt(postEntity.getCreatedAt());
+        postDTO.setUpdatedAt(postEntity.getUpdatedAt());
 
         return postDTO;
     }

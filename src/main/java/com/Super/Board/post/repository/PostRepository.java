@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<PostEntity,Long> {
 
-    List<PostEntity> findByPostWriterContaining(String author);
+    List<PostEntity> findByAuthorContaining(String author);
 }
