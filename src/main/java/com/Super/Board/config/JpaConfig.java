@@ -1,6 +1,5 @@
 package com.Super.Board.config;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -18,7 +17,8 @@ import java.util.Map;
 @EnableJpaRepositories(
         basePackages = {"com.Super.Board.user.repository"},
         entityManagerFactoryRef = "entityManagerFactoryBean",
-        transactionManagerRef =  "tmJpa"
+        transactionManagerRef = "tmJpa"
+
 )
 public class JpaConfig {
 
@@ -43,11 +43,11 @@ public class JpaConfig {
         return em;
     }
 
-    @Bean(name = "tmJpa")
-    public PlatformTransactionManager transactionManger(DataSource dataSource) {
-
+    @Bean(name="tmJpa")
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactoryBean(dataSource).getObject());
+        transactionManager.setEntityManagerFactory(entityManagerFactoryBean((dataSource)).getObject());
         return transactionManager;
     }
 }
+
