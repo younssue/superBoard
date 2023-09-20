@@ -11,12 +11,13 @@ import java.util.stream.Collectors;
 
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class CustomUserDetails implements UserDetails {
 
-    private Integer userId;
+    private Long userId;
 
     private String email;
 
@@ -24,7 +25,7 @@ public class CustomUserDetails implements UserDetails {
 
     private List<String> authorities;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 

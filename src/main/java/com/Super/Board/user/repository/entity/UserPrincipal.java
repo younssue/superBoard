@@ -23,10 +23,10 @@ public class UserPrincipal {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", unique = true)
     private String password;
 
     @OneToMany(mappedBy = "userPrincipal", orphanRemoval = true)

@@ -28,8 +28,8 @@ public class CustomUserDetailService implements UserDetailsService {
                 .orElseThrow(() -> new NotFoundException("email에 해당하는 UserPrincipal가 없습니다"));
 
         CustomUserDetails customUserDetails = CustomUserDetails.builder()
-                .userId(Math.toIntExact(userPrincipal.getUser()
-                        .getUserId()))
+                .userId(userPrincipal.getUser()
+                        .getUserId())
                 .email(userPrincipal.getEmail())
                 .password(userPrincipal.getPassword())
                 .authorities(userPrincipal.getUserPrincipalRoles()

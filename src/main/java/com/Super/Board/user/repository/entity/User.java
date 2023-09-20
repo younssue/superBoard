@@ -18,4 +18,6 @@ public class User {
     private Long userId;
     @Column(name = "user_name", length = 20)
     private String userName;
+
+
 }
