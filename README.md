@@ -12,7 +12,7 @@
 
 ### ✅ 주요기능
 
-#### 1.User (https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/user)
+#### [1.User] (https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/user)
 Spring Security/JWT 
 - 회원가입
 - 로그인
