@@ -1,6 +1,6 @@
 package com.Super.Board.user.repository;
 
-import com.Super.Board.user.repository.entity.UserPrincipal;
+import com.Super.Board.user.entity.UserPrincipal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -2,13 +2,16 @@ package com.Super.Board.comment.controller;
 
 import com.Super.Board.comment.dto.CommentDTO;
 import com.Super.Board.comment.entity.CommentEntity;
-import com.Super.Board.user.repository.entity.userDetails.CustomUserDetails;
+import com.Super.Board.user.entity.User;
+import com.Super.Board.user.entity.userDetails.CustomUserDetails;
 import com.Super.Board.comment.service.CommentService;
+import com.Super.Board.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +21,7 @@ import java.util.Optional;
 public class CommentController {
 
     private final CommentService commentService;
+    private final UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<List<CommentDTO>> findAll() {
@@ -34,7 +38,9 @@ public class CommentController {
     @PostMapping
     public ResponseEntity<String> save(@AuthenticationPrincipal CustomUserDetails customUserDetails,@RequestBody CommentDTO commentDTO) {
         String email = customUserDetails.getUsername();
+        User user = userRepository.findById(customUserDetails.getUserId()).orElseThrow(() -> new EntityNotFoundException("해당하는 사용자를 찾을 수 없습니다."));
         commentDTO.setAuthor(email);
+        commentDTO.setUserId(user.getUserId());
         return commentService.save(commentDTO);
     }
 

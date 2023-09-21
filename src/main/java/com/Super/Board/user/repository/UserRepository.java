@@ -1,6 +1,6 @@
 package com.Super.Board.user.repository;
 
-import com.Super.Board.user.repository.entity.User;
+import com.Super.Board.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

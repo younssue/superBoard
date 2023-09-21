@@ -1,11 +1,14 @@
 package com.Super.Board.post.entity;
 
-import com.Super.Board.user.repository.entity.BaseTimeEntity;
-import com.Super.Board.user.repository.entity.User;
+import com.Super.Board.comment.entity.CommentEntity;
+import com.Super.Board.user.entity.BaseTimeEntity;
+import com.Super.Board.user.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,8 +37,7 @@ public class PostEntity extends BaseTimeEntity{
     @JsonIgnore
     private User user;
 
-    //dto->entity
-    //글작성
-
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "postEntity", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<CommentEntity> commentEntityList = new ArrayList<>();
 }

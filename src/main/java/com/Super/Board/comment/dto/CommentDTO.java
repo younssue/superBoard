@@ -18,6 +18,8 @@ public class CommentDTO {
     private Long postId;
     private LocalDateTime createdAt;
 
+    private Long userId;
+
     public static CommentDTO listDTO(CommentEntity commentEntity) {
         CommentDTO commentDTO = new CommentDTO();
         commentDTO.setId(commentEntity.getId());
@@ -25,6 +27,7 @@ public class CommentDTO {
         commentDTO.setContent(commentEntity.getContent());
         commentDTO.setAuthor(commentEntity.getAuthor());
         commentDTO.setCreatedAt(commentEntity.getCreatedAt());
+        commentDTO.setUserId(commentEntity.getUser().getUserId());
         return commentDTO;
     }
 }

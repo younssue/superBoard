@@ -5,6 +5,8 @@ import com.Super.Board.post.repository.PostRepository;
 import com.Super.Board.comment.entity.CommentEntity;
 import com.Super.Board.comment.repository.CommentRepository;
 import com.Super.Board.post.entity.PostEntity;
+import com.Super.Board.user.entity.User;
+import com.Super.Board.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class CommentService {
 
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final UserRepository userRepository;
 
 
     public List<CommentDTO> findAll() {
@@ -32,9 +35,11 @@ public class CommentService {
 
     public ResponseEntity<String> save(CommentDTO commentDTO) {
         Optional<PostEntity> optionalPostEntity = postRepository.findById(commentDTO.getPostId());
+        Optional<User> optionalUser = userRepository.findById(commentDTO.getUserId());
         if (optionalPostEntity.isPresent()) {
             PostEntity postEntity = optionalPostEntity.get();
-            CommentEntity commentEntity = CommentEntity.saveEntity(commentDTO, postEntity);
+            User user = optionalUser.get();
+            CommentEntity commentEntity = CommentEntity.saveEntity(commentDTO, postEntity, user);
             commentRepository.save(commentEntity);
             return ResponseEntity.status(200).body("댓글이 성공적으로 저장되었습니다.");
         } else {
