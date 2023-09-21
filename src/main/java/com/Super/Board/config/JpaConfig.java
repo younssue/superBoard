@@ -15,6 +15,7 @@ import java.util.Map;
 
 @Configuration
 @EnableJpaRepositories(
+
         basePackages = {"com.Super.Board.user","com.Super.Board.comment","com.Super.Board.post"},
         entityManagerFactoryRef = "entityManagerFactoryBean",
         transactionManagerRef =  "tmJpa"
@@ -42,11 +43,11 @@ public class JpaConfig {
         return em;
     }
 
-    @Bean(name = "tmJpa")
-    public PlatformTransactionManager transactionManger(DataSource dataSource) {
-
+    @Bean(name="tmJpa")
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactoryBean(dataSource).getObject());
+        transactionManager.setEntityManagerFactory(entityManagerFactoryBean((dataSource)).getObject());
         return transactionManager;
     }
 }
+

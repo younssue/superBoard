@@ -38,7 +38,6 @@ public class PostController {
         postEntity.setAuthor(email);
         postEntity.setUser(user);
 
-
         PostEntity response = postService.createPost(postEntity, email);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -73,10 +72,10 @@ public class PostController {
     //post_id? or postId
     @PutMapping("/{postId}")
     public ResponseEntity<String> updatePost(@AuthenticationPrincipal CustomUserDetails customUserDetails,@PathVariable long postId, @RequestBody PostDTO updatedPostDTO) {
+
         // 게시글 ID를 사용하여 해당 게시글을 업데이트
         System.out.println("postId = " + postId);
-     
-        
+             
         String author = customUserDetails.getUsername();
         System.out.println(author);
 
@@ -99,8 +98,6 @@ public class PostController {
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("수정할 권한이 없습니다.");
         }
-
-
     }
 
     // 게시글 삭제

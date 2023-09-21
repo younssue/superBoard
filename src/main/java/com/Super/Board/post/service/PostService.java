@@ -21,6 +21,7 @@ public class PostService {
 
     // 게시글 생성
     public PostEntity createPost(PostEntity postEntity, String email){
+
         return postRepository.save(postEntity);
     }
 

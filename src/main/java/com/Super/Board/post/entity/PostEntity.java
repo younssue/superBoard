@@ -14,7 +14,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "posts")
-public class PostEntity extends BaseTimeEntity {
+public class PostEntity extends BaseTimeEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;

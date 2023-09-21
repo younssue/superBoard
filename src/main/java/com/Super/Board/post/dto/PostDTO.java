@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 public class PostDTO {
 
     private Long postId;
-    // private String author; //작성자
     private String author;
     private String title; //제목
     private String contents; // 내용
