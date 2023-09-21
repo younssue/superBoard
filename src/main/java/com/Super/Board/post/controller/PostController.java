@@ -1,14 +1,18 @@
 package com.Super.Board.post.controller;
 
 import com.Super.Board.post.dto.PostDTO;
+import com.Super.Board.user.repository.UserRepository;
 import com.Super.Board.post.entity.PostEntity;
+import com.Super.Board.user.repository.entity.User;
+import com.Super.Board.user.repository.entity.userDetails.CustomUserDetails;
 import com.Super.Board.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
+import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
@@ -18,17 +22,23 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final UserRepository userRepository;
+
 
     // 셍성
     @PostMapping
-    public ResponseEntity postPost(@RequestBody PostDTO postDto){
+    public ResponseEntity postPost(@AuthenticationPrincipal CustomUserDetails customUserDetails, @RequestBody PostDTO postDto){
+
+        String email = customUserDetails.getUsername();
+        User user = userRepository.findById(customUserDetails.getUserId()).orElseThrow(() -> new EntityNotFoundException("해당하는 사용자를 찾을 수 없습니다."));
 
         PostEntity postEntity = new PostEntity();
         postEntity.setTitle(postDto.getTitle());
         postEntity.setContents(postDto.getContents());
-        postEntity.setAuthor(postDto.getAuthor());
+        postEntity.setAuthor(email);
+        postEntity.setUser(user);
 
-        PostEntity response = postService.createPost(postEntity);
+        PostEntity response = postService.createPost(postEntity, email);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
@@ -61,30 +71,33 @@ public class PostController {
     // 게시글 수정
     //post_id? or postId
     @PutMapping("/{postId}")
-    public ResponseEntity<PostDTO> updatePost(@PathVariable long postId, @RequestBody PostDTO updatedPostDTO) {
+    public ResponseEntity<String> updatePost(@AuthenticationPrincipal CustomUserDetails customUserDetails,@PathVariable long postId, @RequestBody PostDTO updatedPostDTO) {
+
         // 게시글 ID를 사용하여 해당 게시글을 업데이트
         System.out.println("postId = " + postId);
-     
-        
-        String author = "user@email.com";
+             
+        String author = customUserDetails.getUsername();
+        System.out.println(author);
 
-        // 기존 작성 글의 이메일
-        PostDTO exitPostByEmail = postService.getPostById(postId);
+// 기존 작성 글의 이메일
+        PostDTO existingPost = postService.getPostById(postId);
 
-        // 로그인한 유저와 기존 작성 글의 이메일 비교
-        if (author.equals(exitPostByEmail.getAuthor())) {
-            PostDTO updatedPost = postService.updatePost(postId, updatedPostDTO);
+        if (existingPost != null) {
+            // 로그인한 유저와 기존 작성 글의 이메일 비교
+            if (author.equals(existingPost.getAuthor())) {
+                PostDTO updatedPost = postService.updatePost(postId, updatedPostDTO);
 
-            if (updatedPost != null) {
-                return ResponseEntity.ok(updatedPost); // 수정된 게시글을 반환
+                if (updatedPost != null) {
+                    return ResponseEntity.ok("게시글이 성공적으로 수정되었습니다.");
+                } else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("게시글 수정 중 오류가 발생했습니다.");
+                }
             } else {
-                return ResponseEntity.notFound().build(); // 게시글을 찾을 수 없는 경우
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("작성자가 달라서 수정할 권한이 없습니다.");
             }
         } else {
-            // 조회한 게시글이 없는 경우
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("수정할 권한이 없습니다.");
         }
-
     }
 
     // 게시글 삭제
