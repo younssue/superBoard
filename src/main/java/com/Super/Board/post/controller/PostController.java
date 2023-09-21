@@ -102,10 +102,13 @@ public class PostController {
 
     // 게시글 삭제
     @DeleteMapping("/{post-id}")
-    public String deletePost(@PathVariable("post-id") @Positive long postId){
-        postService.deletePost(postId);
+    public ResponseEntity<String>  deletePost(@AuthenticationPrincipal CustomUserDetails customUserDetails,@PathVariable("post-id") @Positive long postId){
 
-        return "success post deleted";
+        String email = customUserDetails.getUsername();
+
+        boolean deleted = postService.deletePost(email,postId);
+        if(deleted) return ResponseEntity.ok("게시글이 성공적으로 삭제되었습니다.");
+        else return ResponseEntity.badRequest().body("게시글 삭제에 실패하였습니다.");
     }
 
 }

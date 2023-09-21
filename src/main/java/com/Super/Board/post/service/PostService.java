@@ -1,6 +1,7 @@
 package com.Super.Board.post.service;
 
 
+import com.Super.Board.comment.entity.CommentEntity;
 import com.Super.Board.post.dto.PostDTO;
 import com.Super.Board.post.entity.PostEntity;
 import com.Super.Board.post.repository.PostRepository;
@@ -93,12 +94,7 @@ public class PostService {
             return null;
         }
     }
-    // 게시글 삭제
-    public void deletePost(long postId) {
-        PostEntity findPost = findVerifiedPost(postId);
 
-        postRepository.delete(findPost);
-    }
 
     // 게시물 있나 검증
     private PostEntity findVerifiedPost(long postId){
@@ -106,5 +102,19 @@ public class PostService {
         PostEntity findPost = optionalPostEntity.orElseThrow(() ->
                 new NoSuchElementException());
         return findPost;
+    }
+
+    // 게시글 삭제
+
+    public boolean deletePost(String email, Long postId) {
+
+        Optional<PostEntity> optionalPost = postRepository.findById(postId);
+
+        if(optionalPost.isPresent()) {
+            postRepository.deleteById(postId);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
