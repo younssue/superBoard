@@ -18,7 +18,7 @@ Spring Security/JWT
 - 로그인
 - 로그아웃
 
-#### 2.Post
+#### [2.Post](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/post)
 로그인 유저 기반 게시판 글
 - 게시글 작성
 - 게시글 전체 목록 불러오기 
@@ -26,7 +26,7 @@ Spring Security/JWT
 - 게시글 수정
 - 게시글 삭제
 
-#### 3.Comment
+#### [3.Comment](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/comment)
 로그인 유저 기반 댓글 글
 - 댓글 작성
 - 댓글 목록 불러오기 
