@@ -1,5 +1,7 @@
-package com.Super.Board.user.repository.entity;
+package com.Super.Board.post.entity;
 
+import com.Super.Board.user.repository.entity.BaseTimeEntity;
+import com.Super.Board.user.repository.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 

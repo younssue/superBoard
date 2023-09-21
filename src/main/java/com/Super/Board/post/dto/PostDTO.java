@@ -1,8 +1,7 @@
-package com.Super.Board.user.dto;
+package com.Super.Board.post.dto;
 
-import com.Super.Board.user.repository.entity.PostEntity;
+import com.Super.Board.post.entity.PostEntity;
 import lombok.*;
-import org.springframework.security.core.userdetails.User;
 
 import java.time.LocalDateTime;
 

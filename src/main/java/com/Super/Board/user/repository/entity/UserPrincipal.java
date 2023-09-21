@@ -1,5 +1,6 @@
 package com.Super.Board.user.repository.entity;
 
+
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,7 +1,7 @@
 package com.Super.Board.user.service.security;
 
+import com.Super.Board.user.repository.entity.userDetails.CustomUserDetails;
 import com.Super.Board.user.repository.entity.Roles;
-import com.Super.Board.user.repository.userDetails.CustomUserDetails;
 import com.Super.Board.user.repository.entity.UserPrincipal;
 import com.Super.Board.user.repository.UserPrincipalRepository;
 import com.Super.Board.user.repository.entity.UserPrincipalRoles;

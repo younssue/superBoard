@@ -1,9 +1,9 @@
-package com.Super.Board.user.service;
+package com.Super.Board.post.service;
 
 
-import com.Super.Board.user.dto.PostDTO;
-import com.Super.Board.user.repository.entity.PostEntity;
-import com.Super.Board.user.repository.PostRepository;
+import com.Super.Board.post.dto.PostDTO;
+import com.Super.Board.post.entity.PostEntity;
+import com.Super.Board.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

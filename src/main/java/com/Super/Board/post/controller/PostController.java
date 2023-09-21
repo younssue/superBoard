@@ -1,11 +1,11 @@
-package com.Super.Board.user.controller;
+package com.Super.Board.post.controller;
 
-import com.Super.Board.user.dto.PostDTO;
+import com.Super.Board.post.dto.PostDTO;
 import com.Super.Board.user.repository.UserRepository;
-import com.Super.Board.user.repository.entity.PostEntity;
+import com.Super.Board.post.entity.PostEntity;
 import com.Super.Board.user.repository.entity.User;
-import com.Super.Board.user.repository.userDetails.CustomUserDetails;
-import com.Super.Board.user.service.PostService;
+import com.Super.Board.user.repository.entity.userDetails.CustomUserDetails;
+import com.Super.Board.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

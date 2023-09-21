@@ -1,4 +1,4 @@
-package com.Super.Board.user.repository.userDetails;
+package com.Super.Board.user.repository.entity.userDetails;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

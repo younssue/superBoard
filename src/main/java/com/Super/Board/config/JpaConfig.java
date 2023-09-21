@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = {"com.Super.Board.user.repository"},
+        basePackages = {"com.Super.Board.user","com.Super.Board.comment","com.Super.Board.post"},
         entityManagerFactoryRef = "entityManagerFactoryBean",
         transactionManagerRef =  "tmJpa"
 )
@@ -25,7 +25,7 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean( DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("com.Super.Board.user.repository");
+        em.setPackagesToScan("com.Super.Board.user","com.Super.Board.comment","com.Super.Board.post");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
