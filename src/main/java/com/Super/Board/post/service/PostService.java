@@ -7,8 +7,6 @@ import com.Super.Board.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,8 @@ public class PostService {
     private final PostRepository postRepository;
 
     // 게시글 생성
-    public PostEntity createPost(PostEntity postEntity){
+    public PostEntity createPost(PostEntity postEntity, String email){
+
         return postRepository.save(postEntity);
     }
 

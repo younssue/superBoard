@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 public class PostDTO {
 
     private Long postId;
-    // private String author; //작성자
-    private String author = "user@email.com";
+    private String author;
     private String title; //제목
     private String contents; // 내용
     private LocalDateTime createdAt; // 작성 시간
     private LocalDateTime updatedAt; // 수정 시간
+
 
     //entity -> dto
 
