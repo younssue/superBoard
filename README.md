@@ -7,7 +7,7 @@
 - mysql 8.0.34
 - gradle
 - JPA
-- Tomcat9
+- Tomcat 9
 
 
 ### ✅ 주요기능
