@@ -4,7 +4,7 @@
 ### ⚙️ 개발환경
 - IntelliJ IDEA Community Edition
 - amazon corretto open jdk 11
-- mysql 8
+- mysql 8.0.34
 - gradle
 - JPA
 - Tomcat9
