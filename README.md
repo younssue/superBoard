@@ -10,6 +10,7 @@
 - gradle
 - JPA
 - Tomcat 9
+- Spring Security/JWT
 
 ### ✅ 주요기능
 
