@@ -51,4 +51,4 @@ Spring Security/JWT
 ### [4. 포스트맨API 명세서](https://documenter.getpostman.com/view/29522798/2s9YCBtUUK)
 
 
-###[5. 프로젝트 API 시현 영상 ](https://youtu.be/qkseVBgtcYY?si=izoickDZej5uV2l2)
+### [5. 프로젝트 API 시현 영상 ](https://youtu.be/qkseVBgtcYY?si=izoickDZej5uV2l2)
