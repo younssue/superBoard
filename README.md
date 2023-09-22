@@ -6,14 +6,14 @@
 
 - IntelliJ IDEA Community Edition
 - amazon corretto open jdk 11
-- mysql 8.0.34
+- mysql 8
 - gradle
 - JPA
 - Tomcat 9
 
 ### ✅ 주요기능
 
-### [1.User](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/user)
+### [1. User](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/user)
 
 Spring Security/JWT
 
@@ -21,7 +21,7 @@ Spring Security/JWT
 - 로그인
 - 로그아웃
 
-### [2.Post](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/post)
+### [2. Post](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/post)
 
 로그인 유저 기반 게시판
 
@@ -36,7 +36,7 @@ Spring Security/JWT
     - 로그인한 유저와 동일한 작성자 일때만 작성한 댓글 삭제 가능
     
 
-### [3.Comment](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/comment)
+### [3. Comment](https://github.com/younssue/superBoard/tree/main/src/main/java/com/Super/Board/comment)
 
 로그인 유저 기반 댓글
 
@@ -49,3 +49,6 @@ Spring Security/JWT
     - 로그인한 유저와 동일한 작성자 일때만 작성한 댓글 삭제 가능
 
 ### [4. 포스트맨API 명세서](https://documenter.getpostman.com/view/29522798/2s9YCBtUUK)
+
+
+###[5. 프로젝트 API 시현 영상 ](https://youtu.be/qkseVBgtcYY?si=izoickDZej5uV2l2)
